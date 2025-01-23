@@ -7,32 +7,31 @@ const Lists = () => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState("");
   const [filter, setFilter] = useState("all");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks"));
-    if (savedTasks) {
-      setTasks(savedTasks);
-    }
+    if (savedTasks) setTasks(savedTasks);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
- 
   const addTask = () => {
-    if (task) {
-      setTasks([...tasks, { text: task, isCompleted: false }]);
-      setTask(""); 
+    if (task.trim()) {
+      setTasks([...tasks, { text: task.trim(), isCompleted: false }]);
+      setTask("");
+      setError("");
+    } else {
+      setError("Task cannot be empty.");
     }
   };
-
 
   const removeTask = (index) => {
     setTasks(tasks.filter((_, i) => i !== index));
   };
 
- 
   const toggleTaskCompletion = (index) => {
     const updatedTasks = [...tasks];
     updatedTasks[index].isCompleted = !updatedTasks[index].isCompleted;
@@ -44,13 +43,16 @@ const Lists = () => {
     setEditingText(tasks[index].text);
   };
 
-
   const saveEdit = () => {
-    const updatedTasks = [...tasks];
-    updatedTasks[editingIndex].text = editingText;
-    setTasks(updatedTasks);
-    setEditingIndex(null);
-    setEditingText("");
+    if (editingText.trim()) {
+      const updatedTasks = [...tasks];
+      updatedTasks[editingIndex].text = editingText.trim();
+      setTasks(updatedTasks);
+      setEditingIndex(null);
+      setEditingText("");
+    } else {
+      setError("Task cannot be empty.");
+    }
   };
 
   const clearCompleted = () => {
@@ -66,35 +68,46 @@ const Lists = () => {
   return (
     <div className="task-list">
       <h1>To-Do List</h1>
-
-
+      {error && <p className="error">{error}</p>}
       <input
         type="text"
         value={task}
         onChange={(e) => setTask(e.target.value)}
         placeholder="Enter a task"
+        aria-label="Task input"
       />
       <button onClick={addTask}>Add Task</button>
-
-
       <div className="filters">
-        <button onClick={() => setFilter("all")}>All</button>
-        <button onClick={() => setFilter("active")}>Active</button>
-        <button onClick={() => setFilter("completed")}>Completed</button>
+        <button
+          className={filter === "all" ? "active-filter" : ""}
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
+        <button
+          className={filter === "active" ? "active-filter" : ""}
+          onClick={() => setFilter("active")}
+        >
+          Active
+        </button>
+        <button
+          className={filter === "completed" ? "active-filter" : ""}
+          onClick={() => setFilter("completed")}
+        >
+          Completed
+        </button>
       </div>
-
       <button onClick={clearCompleted}>Clear Completed Tasks</button>
-
       <ul>
         {filteredTasks.map((task, index) => (
           <li key={index}>
             {editingIndex === index ? (
               <>
-  
                 <input
                   type="text"
                   value={editingText}
                   onChange={(e) => setEditingText(e.target.value)}
+                  aria-label="Edit task"
                 />
                 <button onClick={saveEdit}>Save</button>
               </>
