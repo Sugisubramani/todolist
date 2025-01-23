@@ -1,10 +1,25 @@
-.task-list {
+body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
+    background-image: url('/public/bg\ immage\ 5.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;   
+  }
+  
+  .task-list {
     max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8); 
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+  }  
+  
+  .error {
+    color: rgb(0, 0, 0) ;
+    margin-bottom: 10px;
   }
   
   button {
@@ -14,10 +29,15 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
   }
   
   button:hover {
     background-color: #45a049;
+  }
+  
+  button.active-filter {
+    background-color: #4CAF50;
   }
   
   input[type="text"] {
@@ -34,10 +54,19 @@
   }
   
   li {
-    padding: 10px;
+    padding: 5px;
+    width: 100%;
     background-color: #fff;
     margin-bottom: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
+  }
+  
+  .filters button {
+    margin: 5px;
+  }
+  
+  button:focus {
+    outline: none;
   }
   
