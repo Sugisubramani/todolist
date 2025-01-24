@@ -1,0 +1,58 @@
+.login {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 0px;
+    box-shadow: 0 4px 20px#d94fff;
+  }
+  
+  .login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login input,
+  .login button { 
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    width: 100%;
+    max-width: 300px;
+    align-self: center;
+    box-sizing: border-box;
+  }
+  
+  .login button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    text-align: center; 
+  }
+  
+  .login button:hover {
+    background-color: #45a049;
+  }
+  
+  .login p {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .login a {
+    color: #4caf50;
+    text-decoration: none;
+  }
+  
+  .login a:hover {
+    text-decoration: underline;
+  }
+  
