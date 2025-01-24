@@ -1,11 +1,11 @@
 .login {
-    font-family: Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    box-shadow: 0 4px 20px#d94fff;
   }
   
   .login h2 {
@@ -19,12 +19,12 @@
   }
   
   .login input,
-  .login button {
+  .login button { 
     padding: 10px;
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 13px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0px;
     width: 100%;
     max-width: 300px;
     align-self: center;
